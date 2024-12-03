@@ -99,11 +99,96 @@
             0% { text-shadow: 0 0 10px #ffd1dc, 0 0 20px #ff87ab; }
             100% { text-shadow: 0 0 20px #ffd1dc, 0 0 30px #ff87ab; }
         }
+
+        /* Botón interactivo */
+        .reveal-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: #fff;
+            background: #ff87ab;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .reveal-button:hover {
+            transform: scale(1.1);
+        }
+
+        #hidden-message {
+            margin-top: 20px;
+            color: #fff;
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        /* Globos flotantes */
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: radial-gradient(circle, #ffd1dc 60%, #ff87ab);
+            border-radius: 50%;
+            animation: floatUp 6s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 50px;
+            background: #fff;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-1000px); opacity: 0; }
+        }
+
+        .balloon:nth-child(1) {
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .balloon:nth-child(2) {
+            left: 40%;
+            animation-delay: 2s;
+        }
+
+        .balloon:nth-child(3) {
+            left: 60%;
+            animation-delay: 4s;
+        }
+
+        .balloon:nth-child(4) {
+            left: 80%;
+            animation-delay: 1s;
+        }
     </style>
 </head>
 <body>
     <div class="heart"></div>
-    <h1>ola Tonota</h1>
+    <h1>Hola Tonota</h1>
     <p>Te quiero muchoOoOoOoOoooooo</p>
+    <button class="reveal-button" onclick="revealMessage()">Presiona aquí</button>
+    <p id="hidden-message"> te amo corazonnnn  <3</p></p>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+
+    <script>
+        function revealMessage() {
+            document.getElementById('hidden-message').style.opacity = 1;
+        }
+    </script>
 </body>
 </html>
